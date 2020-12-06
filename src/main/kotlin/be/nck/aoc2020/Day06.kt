@@ -38,15 +38,13 @@ class Day06 : Day<List<String>> {
         return sum.toString()
     }
 
+
     override fun part2(input: List<String>): String {
-        val groups = mutableListOf<List<String>>()
-        var answers = mutableListOf<String>()
+        val groups = mutableListOf<List<HashSet<String>>>()
+        var answers = mutableListOf<HashSet<String>>()
         var counter = 0
         input.forEach {
             if (it == "") {
-                var all = answers
-                var distinct = answers.distinct()
-                answers = distinct.intersect(all).toMutableList()
                 groups.add(counter, answers)
                 answers = mutableListOf()
                 counter++
@@ -54,15 +52,19 @@ class Day06 : Day<List<String>> {
                 val elements = it.split("").toMutableList()
                 elements.removeFirst()
                 elements.removeLast()
-                answers.addAll(elements)
+                answers.add(elements.toHashSet())
             }
         }
         groups.add(counter, answers)
         var sum = 0
-        groups.forEach{
-            sum += it.count()
+        groups.forEach {
+            sum += intersection(it).count()
         }
         return sum.toString()
+    }
+
+    fun intersection(data: List<HashSet<String>>): HashSet<String> {
+        return data.reduce { acc, it -> acc.apply { retainAll(it) } }
     }
 }
 
