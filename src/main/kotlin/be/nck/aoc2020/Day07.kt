@@ -33,7 +33,7 @@ class Day07 : Day<List<String>> {
     }
     fun optionsFor(s: String): List<String> {
         val options = bags.filter { (_, v) ->
-            v.any { it.key == s }
+            v.any { it.key == "shiny gold" }
         }.map { it.key }.flatMap { optionsFor(it) }.toMutableList()
         options.add(s)
         return options.distinct().toList()
