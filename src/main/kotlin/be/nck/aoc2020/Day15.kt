@@ -7,7 +7,7 @@ class Day15 : Day<MutableList<Int>> {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val input: MutableList<Int> = mutableListOf(0, 3, 6)
+            val input: MutableList<Int> = mutableListOf(8,0,17,4,1,12)
             Day15().run(input)
         }
     }
