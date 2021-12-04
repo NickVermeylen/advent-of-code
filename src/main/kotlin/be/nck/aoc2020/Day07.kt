@@ -3,8 +3,6 @@ package be.nck.aoc2020
 import be.nck.utils.Day
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.*
-import java.util.stream.Collectors
 
 
 class Day07 : Day<List<String>> {

@@ -2,8 +2,8 @@ package be.nck.utils
 
 interface Day<T> {
     fun run(input: T) {
-        part1(input)
-        part2(input)
+//        part1(input)
+//        part2(input)
         val start = System.currentTimeMillis()
         println(String.format("Part 1 result: %s", part1(input)))
         val part1 = System.currentTimeMillis()
