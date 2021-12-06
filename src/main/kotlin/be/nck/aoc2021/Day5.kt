@@ -1,10 +1,8 @@
 package be.nck.aoc2021
 
 import be.nck.utils.Day
-import java.lang.Double.sum
 import java.nio.file.Files
 import java.nio.file.Paths
-import kotlin.math.abs
 import kotlin.math.max
 
 class Day5 : Day<List<String>> {
@@ -42,7 +40,6 @@ class Day5 : Day<List<String>> {
     override fun part2(input: List<String>): String? {
         return countVents(input, diagonals = true).toString()
     }
-
 
 
 }
