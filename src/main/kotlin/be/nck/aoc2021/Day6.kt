@@ -13,7 +13,7 @@ class Day6 : Day<List<Int>> {
             val ages = input.map { it.toInt() }.toList()
             Day6().run(ages)
         }
-        fun interateDay(input: List<Int>): MutableList<Int> {
+        tailrec fun interateDay(input: List<Int>, days:Int): MutableList<Int> {
             val ages = input.toMutableList()
             val newFish = mutableListOf<Int>()
             var index = 0
@@ -27,24 +27,20 @@ class Day6 : Day<List<Int>> {
                 index++
             }
             ages.addAll(newFish)
-            return ages
+            return if (days - 1 < 1){
+                ages
+            } else{
+                interateDay(ages, days-1)
+            }
         }
     }
 
     override fun part1(input: List<Int>): String? {
-        var result = input
-        for (i in 1..80){
-            result = interateDay(result)
-        }
-        return result.size.toString()
+        return interateDay(input, 80).size.toString()
     }
 
     override fun part2(input: List<Int>): String? {
-        var result = input
-        for (i in 1..256){
-            result = interateDay(result)
-        }
-        return result.size.toString()
+        return interateDay(input, 256).size.toString()
     }
 
 

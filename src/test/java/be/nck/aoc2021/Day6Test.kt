@@ -17,11 +17,12 @@ internal class Day6Test{
     @Test
     internal fun days() {
         assertThat(input).isEqualTo(listOf(3,4,3,1,2))
-        var fish = Day6.interateDay(input)
+        var fish = Day6.interateDay(input, 1)
         assertThat(fish).isEqualTo(listOf(2,3,2,0,1))
-        fish = Day6.interateDay(fish)
+        fish = Day6.interateDay(input, 2)
         assertThat(fish).isEqualTo(listOf(1,2,1,6,0,8))
-        fish = Day6.interateDay(fish)
+        fish = Day6.interateDay(input, 3)
         assertThat(fish).isEqualTo(listOf(0,1,0,5,6,7,8))
+        assertThat(Day6.interateDay(input, 80).size).isEqualTo(5934)
     }
 }
