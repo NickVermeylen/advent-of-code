@@ -13,20 +13,18 @@ class Day6 : Day<List<Int>> {
             val ages = input.map { it.toInt() }.toList()
             Day6().run(ages)
         }
-        tailrec fun interateDay(input: List<Int>, days:Int): MutableList<Int> {
-            val ages = input.toMutableList()
-            val newFish = mutableListOf<Int>()
-            var index = 0
-            ages.forEach {
-                if (it == 0){
-                    ages[index] = 6
-                    newFish.add(8)
-                } else {
-                    ages[index] = it - 1
-                }
-                index++
+        tailrec fun interateDay(input: Map<Int, Long>, days:Int): Map<Int, Long> {
+            val ages = input.toMutableMap()
+            val newAges = mutableMapOf<Int, Long>()
+            newAges[6] = (ages[7]?:0) + (ages[0]?:0)
+            for (i in 0..5) {
+                newAges[i] = ages[i+1]?:0
             }
-            ages.addAll(newFish)
+            newAges[7] = ages[8]?:0
+            newAges[8] = ages[0]?:0
+            for (i in 0..8) {
+                ages[i] = newAges[i]?:0
+            }
             return if (days - 1 < 1){
                 ages
             } else{
@@ -36,11 +34,13 @@ class Day6 : Day<List<Int>> {
     }
 
     override fun part1(input: List<Int>): String? {
-        return interateDay(input, 80).size.toString()
+        val input1 = input.groupingBy { it }.eachCount().mapValues { it.value.toLong() }
+        return interateDay(input1, 80).values.sum().toString()
     }
 
     override fun part2(input: List<Int>): String? {
-        return interateDay(input, 256).size.toString()
+        val input1 = input.groupingBy { it }.eachCount().mapValues { it.value.toLong() }
+        return interateDay(input1, 256).values.sum().toString()
     }
 
 
