@@ -20,10 +20,10 @@ class Day9 : Day<List<List<Int>>> {
             val e = points.getOrNull(i)?.getOrNull(j + 1) ?: -1
             val w = points.getOrNull(i)?.getOrNull(j - 1) ?: -1
 
-            if (n >= 0 && point >= n) return false
-            if (s >= 0 && point >= s) return false
-            if (e >= 0 && point >= e) return false
-            if (w >= 0 && point >= w) return false
+            if (n in 0..point) return false
+            if (s in 0..point) return false
+            if (e in 0..point) return false
+            if (w in 0..point) return false
 
             return true
         }
