@@ -16,12 +16,12 @@ internal class Day10Test {
     }
 
     @Test
-    internal fun countEasyNumbers() {
+    internal fun part1() {
         assertThat(day10.part1(input)).isEqualTo("26397")
     }
 
     @Test
-    internal fun determineOutput() {
-
+    internal fun part2() {
+        assertThat(day10.part2(input)).isEqualTo("288957")
     }
 }
