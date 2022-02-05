@@ -3,6 +3,7 @@ package be.nck.aoc2021
 import be.nck.utils.Day
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.util.*
 import javax.xml.stream.events.Characters
 
 class Day9 : Day<List<List<Int>>> {
@@ -28,7 +29,7 @@ class Day9 : Day<List<List<Int>>> {
             return true
         }
 
-        fun calculateLowPoints(input: List<List<Int>>): String? {
+        fun calculateLowPoints(input: List<List<Int>>): MutableList<Int> {
             val lowPoints = mutableListOf<Int>()
             for (r in input.indices) {
                 for (c in input[r].indices) {
@@ -37,12 +38,13 @@ class Day9 : Day<List<List<Int>>> {
                     }
                 }
             }
-            return (lowPoints.size + lowPoints.sum()).toString()
+            return lowPoints
         }
     }
 
     override fun part1(input: List<List<Int>>): String? {
-        return calculateLowPoints(input)
+        val lowPoints = calculateLowPoints(input)
+        return (lowPoints.size + lowPoints.sum()).toString()
     }
 
     override fun part2(input: List<List<Int>>): String? {

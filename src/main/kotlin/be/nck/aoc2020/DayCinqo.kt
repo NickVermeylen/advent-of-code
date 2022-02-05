@@ -16,7 +16,7 @@ class DayCinqo : Day<List<String>> {
 
     override fun part1(input: List<String>): String {
         val seatIds = getSeats(input)
-        return seatIds.max().toString()
+        return seatIds.toString()
     }
 
     private fun getSeats(input: List<String>): MutableList<Int> {
@@ -43,10 +43,11 @@ class DayCinqo : Day<List<String>> {
 
     override fun part2(input: List<String>): String {
         val seats = getSeats(input)
-        val endInclusive = seats.max()!!.toInt() + 1
-        val all = IntRange(seats.min()!!, endInclusive).toMutableSet()
-        all.removeAll(seats)
-        return all.first().toString()
+//        val endInclusive = seats.max()!!.toInt() + 1
+//        val all = IntRange(seats.min()!!, endInclusive).toMutableSet()
+//        all.removeAll(seats)
+//        return all.first().toString()
+        return "s"
     }
 }
 
